@@ -1,0 +1,18 @@
+# Automatically generated files
+~$*
+*.pyc
+**.egg-info
+*-checkpoint.ipynb
+/.venv
+#/biasbalancer_docs/build
+
+# Personal vscode settings
+.vscode/settings.json
+
+# Large model files
+**/hparams.yaml
+/checkpoints
+*.ckpt
+
+# Data containing sensitive information
+/data/CheXpert

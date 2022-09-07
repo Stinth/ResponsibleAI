@@ -1,0 +1,26 @@
+numpy
+pandas
+torch
+torchvision
+torchmetrics
+scikit-learn==0.24.2
+matplotlib
+seaborn
+tqdm
+plotnine
+plotly
+kaleido
+--editable .
+--editable src_biasbalancer
+pytorch-lightning >= 1.5.0
+optuna
+xlrd
+statsmodels
+Pillow
+scikit-image
+pandoc
+imgaug==0.2.5
+opencv-python
+openpyxl
+sphinx
+sphinx-rtd-theme
