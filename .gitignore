@@ -1,0 +1,5 @@
+# Automatically generated files
+/.venv
+
+# Personal vscode settings
+.vscode/settings.json
