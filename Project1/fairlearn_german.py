@@ -56,7 +56,7 @@ X_test, X_val, y_test, y_val, A_test, A_val= train_test_split(
 
 # Train the classifier
 # model = MLPClassifier(hidden_layer_sizes=(100, 100), max_iter=1000, random_state=1)
-model = MLPClassifier(random_state=1, max_iter=4000, n_iter_no_change=400)
+model = MLPClassifier(random_state=1, max_iter=4000, n_iter_no_change=800)
 model.fit(X_train, y_train)
 
 # Scores of the classifier
@@ -71,7 +71,7 @@ test_preds = (test_scores >= np.mean(y_train)) * 1
 unaware_model_output = X_test.join(
     pd.DataFrame(
         {'score': test_scores, 'pred': test_preds, 'y': y_test, 'sex': A_test}))
-WEIGHT_FP = 0.5
+WEIGHT_FP = 0.9
 unaware_analysis = BiasBalancer(
     data = unaware_model_output,
     y_name = "y",
@@ -81,7 +81,7 @@ unaware_analysis = BiasBalancer(
     w_fp = WEIGHT_FP,
     model_name='German Credit Scores')
 
-# level1_output_data = unaware_analysis.level_1()
+level1_output_data = unaware_analysis.level_1()
 rates, relative_rates, barometer = unaware_analysis.level_2()
 _ = unaware_analysis.level_3(method = 'confusion_matrix', **{'cm_print_n': True})
 # plt.show()
@@ -145,7 +145,7 @@ print(mf.by_group)
 aware_model_output = X_test.join(
     pd.DataFrame(
         {'score': test_scores, 'pred': postprocess_preds, 'y': y_test, 'sex': A_test}))
-WEIGHT_FP = 0.5
+WEIGHT_FP = 0.9
 aware_analysis = BiasBalancer(
     data = aware_model_output,
     y_name = "y",
@@ -155,7 +155,7 @@ aware_analysis = BiasBalancer(
     w_fp = WEIGHT_FP,
     model_name='German Credit Scores')
 
-# level1_output_data = aware_analysis.level_1()
+level1_output_data = aware_analysis.level_1()
 rates, relative_rates, barometer = aware_analysis.level_2()
 _ = aware_analysis.level_3(method = 'confusion_matrix', **{'cm_print_n': True})
 plt.show()
