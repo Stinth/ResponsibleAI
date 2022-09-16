@@ -89,6 +89,7 @@ rates, relative_rates, barometer = unaware_analysis.level_2()
 _ = unaware_analysis.level_3(method = 'confusion_matrix', **{'cm_print_n': True})
 
 # Fairlearn
+np.random.seed(1337)
 postprocess_est = ThresholdOptimizer(
     estimator=model,
     constraints="equalized_odds",
